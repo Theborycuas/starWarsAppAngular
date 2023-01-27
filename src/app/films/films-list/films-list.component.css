@@ -1,0 +1,36 @@
+.films {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+.film {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+.film img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+.film h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    background-color: orange;
+    text-align: center;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .films {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    :host {
+        padding: 0px 100px;
+    }
+}

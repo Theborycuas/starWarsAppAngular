@@ -1,0 +1,10 @@
+<br>
+<button class="buttonSucces" type="button" [routerLink]="['/characters/form-character/']">Nuevo Personaje</button>
+<br>
+<br>
+<section class="characters">    
+    <a class="character" *ngFor="let char of character;" [routerLink]="['/characters/character-detail/', char.id]">
+        <img src='{{char.image}}' alt="">
+        <h2>{{ char.name }}</h2>
+    </a>
+</section>

@@ -1,0 +1,47 @@
+/* Detalle personajes */
+:host {
+    display: flex;
+    justify-content: center;
+}
+.container-detail {
+    width: 90%;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.container-detail > img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+.detail-info {
+    padding: 40px;
+}
+.buttons-option {
+    display: flex;
+    justify-content: flex-end;
+}
+.container-detail h3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: orange;
+    margin-bottom: 20px;
+}
+.character-characteristic {
+    color: yellow;
+    font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+    .container-detail {
+        flex-direction: row;
+        width: auto;
+    }
+    .container-detail > img {
+        width: 30%;
+        border-radius: 10px 0  0 10px;
+    }
+    .detail-info {
+        width: 100%;
+    }
+}
