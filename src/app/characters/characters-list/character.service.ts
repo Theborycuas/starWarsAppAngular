@@ -36,16 +36,12 @@ export class CharacterService {
   //Actualizar Personaje
 
   public updatePersonaje(character:Character){
-    return this.http.put<Character>(this.baseURL + 'personaje/create', Character);
+    return this.http.post<Character>(this.baseURL + 'personaje/update', character);
   }
 
-  //Obtener Personaje
+  //Eliminar Personaje
 
   public deletePersonaje(id:number){
-    return this.http.delete<Character>(this.baseURL + 'personaje/delete' + id);
+    return this.http.get<Character>(this.baseURL + 'personaje/delete/' + id);
   }
-
-
-
-
 }

@@ -34,10 +34,17 @@ export class CharactersListComponent implements OnInit {
       })
     //this.getListPersonajes()
   }
- 
- 
+  
+  deleteCharacter(character:Character):void{
+    console.log("Delete Character");
+    this.characterService.deletePersonaje(parseInt(character.id))
+    .subscribe(
+      res=>this.characterService.getListPersonajes()
+      .subscribe(
+        response=>this.character=response
+      )
+    );
 
-
-
+  }
 
 }

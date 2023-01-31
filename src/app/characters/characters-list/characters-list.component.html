@@ -2,9 +2,13 @@
 <button class="buttonSucces" type="button" [routerLink]="['/characters/form-character/']">Nuevo Personaje</button>
 <br>
 <br>
-<section class="characters">    
-    <a class="character" *ngFor="let char of character;" [routerLink]="['/characters/character-detail/', char.id]">
-        <img src='{{char.image}}' alt="">
-        <h2>{{ char.name }}</h2>
-    </a>
+<section class="characters">  
+    <div  *ngFor="let char of character;">
+        <a class="character" [routerLink]="['/characters/form-character/', char.id]">
+            <img src='{{char.image}}' alt="">
+            <h2>{{ char.name }}</h2>        
+        </a>
+        <button class="buttonSucces" type="button" (click)="deleteCharacter(char)">Eliminar</button>
+    </div>  
+    
 </section>

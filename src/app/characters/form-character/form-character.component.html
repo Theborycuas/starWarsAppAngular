@@ -24,6 +24,13 @@
     <input type="text" name="image" [(ngModel)]="character.image">
     <br>
     <br> 
-    <button class="buttonSucces" role="button" (click)="createPersonaje()">Guardar</button>
+    <button class="buttonSucces" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock"  >Guardar</button>
+    <br>
+    <br>
+    <br> 
+    <ng-template #elseBlock>
+        <button class="buttonSucces" role="button" (click)="updateCharacter()">Actualizar</button>    
+    </ng-template>
+    
     <br>
 </form>
