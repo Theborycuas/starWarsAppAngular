@@ -7,7 +7,6 @@ import { FormCharacterComponent } from './form-character/form-character.componen
 const routes: Routes = [{
   path:'',
   component:CharactersListComponent
-
 },
 {
   path: 'character-detail',
@@ -16,6 +15,10 @@ const routes: Routes = [{
 },
 {
   path:'form-character',
+  component: FormCharacterComponent,
+},
+{
+  path:'form-character/:id',
   component: FormCharacterComponent,
 }];
 
