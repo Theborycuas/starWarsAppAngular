@@ -27,6 +27,8 @@
     text-align: center;
     width: 100%;
     border-radius: 0 0 10px 10px;
+    margin: 0px;
+    padding: 5px 0px;
 }
 
 .icon {
@@ -40,10 +42,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-orange);
     padding: 40px;
     border-radius: 10px;
 }
+.add-button img {
+    border-radius: 50%;
+}
+.add-button img:hover {
+    animation: fill 2s ease infinite;
+}
+.buttons-option {
+    padding-top: 5px;
+    padding-right: 5px;
+    position: absolute;
+}
+.card {
+    padding: 20px;
+}
+
 
 .add-button img {
     border-radius: 50%;
@@ -68,6 +84,7 @@
 .character:hover {
     animation: fill 2s ease infinite;
 }
+
 @keyframes fill {
     0% {
         box-shadow: rgba(217, 233, 250, 0) 0px 0px 0px 0px;
