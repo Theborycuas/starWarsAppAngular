@@ -1,16 +1,17 @@
 .characters {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
 }
 .character {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: initial;
+    align-items: end;
     flex-direction: column;
     text-decoration: none;
+    border-radius: 10px;
 }
-.character img {
+.character > img {
     width: 100%;
     height: 250px;
     object-fit: scale-down;
@@ -24,6 +25,8 @@
     text-align: center;
     width: 100%;
     border-radius: 0 0 10px 10px;
+    margin: 0px;
+    padding: 5px 0px;
 }
 
 .icon {
@@ -37,10 +40,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-orange);
     padding: 40px;
     border-radius: 10px;
 }
+.add-button img {
+    border-radius: 50%;
+}
+.add-button img:hover {
+    animation: fill 2s ease infinite;
+}
+.buttons-option {
+    padding-top: 5px;
+    padding-right: 5px;
+    position: absolute;
+}
+.card {
+    padding: 20px;
+}
+
 
 .btn-action{
     position: static;    
@@ -61,12 +78,21 @@
 
 .buttonSucces {background-color: #4CAF50;} /* Green */
 
-@media screen and (min-width: 768px) {
-    .characters {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+.character:hover {
+    animation: fill 2s ease infinite;
+}
+@keyframes fill {
+    0% {
+        box-shadow: rgba(217, 233, 250, 0) 0px 0px 0px 0px;
     }
-    :host {
-        padding: 0px 100px;
+
+
+    50% {
+        box-shadow: rgba(217, 233, 250, 0.6) 0px 0px 20px 5px;
+    }
+
+    100% {
+        box-shadow: rgba(217, 233, 250, 0) 0px 0px 0px 0px;
     }
 
 }
