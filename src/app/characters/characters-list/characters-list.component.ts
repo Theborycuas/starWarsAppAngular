@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Character } from './character';
-import { CharacterService } from './character.service';
+import { Character } from '../character';
+import { CharacterService } from '../character.service';
 
 
 
@@ -32,12 +32,11 @@ export class CharactersListComponent implements OnInit {
       () => {                                   //Complete callback
         console.log('Request completed')
       })
-    //this.getListPersonajes()
   }
   
   deleteCharacter(character:Character):void{
     console.log("Delete Character");
-    this.characterService.deletePersonaje(parseInt(character.id))
+    this.characterService.deletePersonajeById(parseInt(character.id))
     .subscribe(
       res=>this.characterService.getListPersonajes()
       .subscribe(

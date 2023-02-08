@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../characters-list/character';
-import { CharacterService } from '../characters-list/character.service';
+import { Character } from '../character';
+import { CharacterService } from '../character.service';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,20 +10,19 @@ import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
 })
 export class FormCharacterComponent implements OnInit {
   character: Character = new Character();
-  tittle: String = "Prueba Crear";
 
   constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.cargarCharacter();
+    this.getCharacterById();
   }
 
-  cargarCharacter():void{
+  getCharacterById():void{
     this.activateRoute.params.subscribe(
       c=>{
         let id=c['id'];
         if(id){
-          this.characterService.getPersonaje(id).subscribe(
+          this.characterService.getPersonajeById(id).subscribe(
             cha=>this.character=cha
           );
         }
