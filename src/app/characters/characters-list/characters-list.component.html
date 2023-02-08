@@ -1,10 +1,21 @@
-<br>
-<button class="buttonSucces" type="button" [routerLink]="['/characters/form-character/']">Nuevo Personaje</button>
-<br>
-<br>
-<section class="characters">    
-    <a class="character" *ngFor="let char of character;" [routerLink]="['/characters/character-detail/', char.id]">
-        <img src='{{char.image}}' alt="">
-        <h2>{{ char.name }}</h2>
+<section class="characters">
+    <a class="add-button" routerLink="/characters/create">
+        <img src="/assets/img/add.png" alt="Crear">
     </a>
+    <div class="card" *ngFor="let char of character">
+        <div class="character">
+            <div class="buttons-option">
+                <a href="" title="Editar">
+                    <img class="" src="/assets/img/edit.png" width="25" alt="">
+                </a>
+                <a href="" title="Eliminar">
+                    <img src="/assets/img/delete.png" width="25" alt="">
+                </a>
+            </div>
+            <a class="character" [routerLink]="['/characters/character-detail/', char.id]">
+                <img src="/assets/img/character/list/{{ char.image }}" alt="">
+                <h2>{{ char.name }}</h2>
+            </a>
+        </div>
+    </div>
 </section>
