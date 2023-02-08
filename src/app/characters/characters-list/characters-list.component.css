@@ -16,6 +16,8 @@
     height: 250px;
     object-fit: scale-down;
     border-radius: 10px 10px 0 0;
+    margin: 0px;
+    padding: 5px 0px;
 }
 .character h2 {
     color: white;
@@ -59,19 +61,20 @@
 }
 
 
-.btn-action{
-    position: static;    
-    top: -15px;
-    right: 5px;   
-    
-  }
-
-.card-header-bar{
+.add-button img {
+    border-radius: 50%;
+}
+.add-button img:hover {
+    animation: fill 2s ease infinite;
+}
+.buttons-option {
+    padding-top: 5px;
+    padding-right: 5px;
     position: absolute;
-    top:0;
-    width: 100%;
-    z-index: 1;
-    width: 100%;
+   
+}
+.card {
+    padding: 20px;
 }
 
 
@@ -81,11 +84,11 @@
 .character:hover {
     animation: fill 2s ease infinite;
 }
+
 @keyframes fill {
     0% {
         box-shadow: rgba(217, 233, 250, 0) 0px 0px 0px 0px;
     }
-
 
     50% {
         box-shadow: rgba(217, 233, 250, 0.6) 0px 0px 20px 5px;
@@ -94,6 +97,4 @@
     100% {
         box-shadow: rgba(217, 233, 250, 0) 0px 0px 0px 0px;
     }
-
 }
-
