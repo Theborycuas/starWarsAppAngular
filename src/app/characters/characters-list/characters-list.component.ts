@@ -43,7 +43,6 @@ export class CharactersListComponent implements OnInit {
         response=>this.character=response
       )
     );
-
   }
 
 }
