@@ -9,7 +9,27 @@ const routes: Routes = [{
     path: '', 
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'home', 
+    redirectTo: 'home',
+    pathMatch: 'full'
   }, 
+  {
+    path: 'characters', 
+    redirectTo: 'characters',
+    pathMatch: 'full'
+  }, 
+  {
+    path: 'films', 
+    redirectTo: 'films',
+    pathMatch: 'full'
+  }, 
+  {
+    path: '**', 
+    redirectTo: 'home/pageNotFound',
+    pathMatch: 'full'
+  },  
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
