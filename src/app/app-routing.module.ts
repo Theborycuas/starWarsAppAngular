@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { ErrorNotFoundComponent } from './error-not-found/error-not-found/error-not-found.component';
+import { ErrorNotFoundModule } from './error-not-found/error-not-found.module';
 
 const routes: Routes = [{
   path: '',
@@ -27,7 +29,7 @@ const routes: Routes = [{
   }, 
   {
     path: '**', 
-    redirectTo: 'home/pageNotFound',
+    redirectTo: 'pageNotFound',
     pathMatch: 'full'
   },  
   {
@@ -41,6 +43,10 @@ const routes: Routes = [{
   {
     path: 'films',
     loadChildren: () => import('./films/films.module').then(m => m.FilmsModule),
+  },
+  {
+    path: 'pageNotFound',
+    loadChildren: () => import('./error-not-found/error-not-found.module').then(m => m.ErrorNotFoundModule),
   }]
 }];
 
