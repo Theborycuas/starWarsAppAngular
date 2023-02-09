@@ -17,8 +17,7 @@ export class FormCharacterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  createPersonaje():void{
+  createPersonaje(): void {
     console.log(this.character);
     this.characterService.createPersonaje(this.character)
     .subscribe(
@@ -26,4 +25,11 @@ export class FormCharacterComponent implements OnInit {
     );
   }
 
+  validateNumber(event: KeyboardEvent) {
+    const pattern = /^\d*\.?\d*$/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+  }
 }

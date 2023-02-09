@@ -1,29 +1,23 @@
-<br>
-{{tittle}}
-<br>
-<br>
-<br>
-<form action="/my-handling-form-page" method="post">
-    <label for="name">Nombre:</label>
-    <input type="text" name="user_name" [(ngModel)]="character.name">
-    <br>    
-    <br>    
-    <label for="mail">Cumpleaños:</label>
-    <input type="text" name="birthyear" [(ngModel)]="character.birthyear">    
-    <br>  
-    <br>   
-    <label for="msg">Especie:</label>
-    <input type="text" id="specie" name="specie" [(ngModel)]="character.specie">
-    <br>  
-    <br>  
-    <label for="msg">Tamaño:</label>
-    <input type="text" name="height" [(ngModel)]="character.height">
-    <br>    
-    <br> 
-    <label for="msg">Imagen:</label>
-    <input type="text" name="image" [(ngModel)]="character.image">
-    <br>
-    <br> 
-    <button class="buttonSucces" role="button" (click)="createPersonaje()">Guardar</button>
-    <br>
-</form>
+<section>
+    <p class="title">CREAR PERSONAJE</p>
+    <form class="center" action="/my-handling-form-page" method="post">
+        <div class="container">
+            <div class="column">
+                <input type="text" class="input-group"  name="name" placeholder="Nombre">
+                <input type="date" class="input-group" name="birthyear" placeholder="Año de Nacimiento">
+                <input type="text" class="input-group" name="specie" placeholder="Especie">
+                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura" (keypress)="validateNumber($event)">
+                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)">
+            </div>
+            <div class="column">
+                <input type="text" class="input-group" name="gender" placeholder="Género">
+                <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo">
+                <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel">
+                <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal">
+                <input type="file" name="file" id="file" class="inputfile input-group" />
+                <label for="file">Seleccionar Imagen</label>
+            </div>
+        </div>
+        <a class="btn" href="" (click)="createPersonaje()">GUARDAR</a>
+    </form>
+</section>

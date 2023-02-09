@@ -1,0 +1,93 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+label {
+    color: white;
+}
+.input-group {
+    background-color: transparent;
+    border-radius: 7px;
+    color: #f4e354;
+    border: solid;
+    padding: 10px;
+    font-size: initial;
+    letter-spacing: 1px;
+}
+.title {
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+    margin: 0;
+}
+input:focus-visible {
+    outline: 0px solid #f4e354;
+    animation: fill 1.5s ease infinite;
+}
+.column {
+    display: grid;
+    gap: 20px;
+}
+.center {
+    text-align: center;
+}
+.btn {
+    padding: 15px 20px 12px 20px;
+    text-decoration: none;
+    background-color: #f4e354;
+    border-radius: 10px;
+    color: black;
+}
+.btn:hover {
+    animation: fill 1.5s ease infinite;
+}
+section {
+    margin-bottom: 30px;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: black;
+    background-color: #f4e354;
+    display: inline-block;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    border-radius: 7px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    animation: fill 1.5s ease infinite;
+}
+.inputfile + label {
+	cursor: pointer;
+}
+.inputnumber {
+    -webkit-appearance: none;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+@keyframes fill {
+    0% {
+        box-shadow: rgba(244, 227, 84, 1) 0px 0px 0px 0px;
+    }
+
+    50% {
+        box-shadow: rgba(244, 227, 84, 1) 0px 0px 10px 4px;
+    }
+
+    100% {
+        box-shadow: rgba(244, 227, 84, 1) 0px 0px 0px 0px;
+    }
+}
