@@ -77,10 +77,6 @@
     padding: 20px;
 }
 
-
-
-.buttonSucces {background-color: #4CAF50;} /* Green */
-
 .character:hover {
     animation: fill 2s ease infinite;
 }
