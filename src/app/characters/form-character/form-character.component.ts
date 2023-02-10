@@ -17,6 +17,9 @@ export class FormCharacterComponent implements OnInit {
     this.getCharacterById();
   }
 
+
+  createPersonaje(): void {
+
   getCharacterById():void{
     this.activateRoute.params.subscribe(
       c=>{
@@ -31,6 +34,7 @@ export class FormCharacterComponent implements OnInit {
   }
  
   createPersonaje():void{
+
     console.log(this.character);
     this.characterService.createPersonaje(this.character)
     .subscribe(
@@ -38,11 +42,17 @@ export class FormCharacterComponent implements OnInit {
     );
   }
 
+  validateNumber(event: KeyboardEvent) {
+    const pattern = /^\d*\.?\d*$/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+  }
   updateCharacter():void{
     this.characterService.updatePersonaje(this.character)
     .subscribe(
       res=>this.router.navigate(['/characters'])
     );
   }  
-
 }
