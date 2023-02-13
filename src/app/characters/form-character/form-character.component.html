@@ -3,21 +3,25 @@
     <form class="center" action="/my-handling-form-page" method="post">
         <div class="container">
             <div class="column">
-                <input type="text" class="input-group"  name="name" placeholder="Nombre">
-                <input type="date" class="input-group" name="birthyear" placeholder="Año de Nacimiento">
-                <input type="text" class="input-group" name="specie" placeholder="Especie">
-                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura" (keypress)="validateNumber($event)">
-                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)">
+                <input type="text" class="input-group"  name="name" placeholder="Nombre" [(ngModel)]="character.name">
+                <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento" [(ngModel)]="character.birthyear">
+                <input type="text" class="input-group" name="specie" placeholder="Especie" [(ngModel)]="character.specie">
+                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura" (keypress)="validateNumber($event)" [(ngModel)]="character.height">
+                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)" [(ngModel)]="character.mass">
             </div>
             <div class="column">
-                <input type="text" class="input-group" name="gender" placeholder="Género">
-                <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo">
-                <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel">
-                <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal">
-                <input type="file" name="file" id="file" class="inputfile input-group" />
-                <label for="file">Seleccionar Imagen</label>
+                <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender">
+                <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo" [(ngModel)]="character.haircolor">
+                <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel" [(ngModel)]="character.skincolor">
+                <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal" [(ngModel)]="character.homeworld">
+                <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group" [(ngModel)]="character.image"/>
+                
             </div>
         </div>
-        <a class="btn" href="" (click)="createPersonaje()">GUARDAR</a>
+        <a class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock"  >GUARDAR</a>
+        
+        <ng-template #elseBlock>
+            <a class="btn" role="button" (click)="updateCharacter()">ACTUALIZAR</a>  
+        </ng-template>
     </form>
 </section>

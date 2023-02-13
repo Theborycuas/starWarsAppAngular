@@ -20,6 +20,14 @@ const routes: Routes = [{
 {
   path:'form-character/:id',
   component: FormCharacterComponent,
+},
+{
+  path: 'pageNotFound',
+  loadChildren: () => import('../error-not-found/error-not-found.module').then(m => m.ErrorNotFoundModule),
+}, 
+{
+  path: '**', 
+  redirectTo: 'pageNotFound'
 }];
 
 @NgModule({
