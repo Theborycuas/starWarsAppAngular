@@ -21,17 +21,12 @@ const routes: Routes = [{
     path: 'characters', 
     redirectTo: 'characters',
     pathMatch: 'full'
-  }, 
+  },  
   {
     path: 'films', 
     redirectTo: 'films',
     pathMatch: 'full'
-  }, 
-  {
-    path: '**', 
-    redirectTo: 'pageNotFound',
-    pathMatch: 'full'
-  },  
+  },
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
@@ -47,6 +42,10 @@ const routes: Routes = [{
   {
     path: 'pageNotFound',
     loadChildren: () => import('./error-not-found/error-not-found.module').then(m => m.ErrorNotFoundModule),
+  }, 
+  {
+    path: '**', 
+    redirectTo: 'pageNotFound'
   }]
 }];
 

@@ -17,24 +17,32 @@ export class FormCharacterComponent implements OnInit {
     this.getCharacterById();
   }
 
-
-  createPersonaje(): void {
-
   getCharacterById():void{
     this.activateRoute.params.subscribe(
       c=>{
-        let id=c['id'];
-        if(id){
+        let id=c['id']; 
+        this.characterService.getPersonajeById(id).subscribe(
+          cha=>{
+            console.log(cha);
+            if (cha !== null) {              
+              this.character=cha;
+            }else{
+              this.router.navigate(['/pageNotFound'])
+            }
+          }   
+        );
+        /*if(id){
           this.characterService.getPersonajeById(id).subscribe(
             cha=>this.character=cha
           );
-        }
-      }
-    )
+        }else{
+          console.error('Request failed with error')
+        }*/
+      },      
+    )    
   }
  
   createPersonaje():void{
-
     console.log(this.character);
     this.characterService.createPersonaje(this.character)
     .subscribe(
@@ -42,17 +50,19 @@ export class FormCharacterComponent implements OnInit {
     );
   }
 
+  updateCharacter():void{
+    this.characterService.updatePersonaje(this.character)
+    .subscribe(
+      res=>this.router.navigate(['/characters'])
+    );
+  } 
+
   validateNumber(event: KeyboardEvent) {
     const pattern = /^\d*\.?\d*$/;
     const inputChar = String.fromCharCode(event.charCode);
     if (!pattern.test(inputChar)) {
         event.preventDefault();
     }
-  }
-  updateCharacter():void{
-    this.characterService.updatePersonaje(this.character)
-    .subscribe(
-      res=>this.router.navigate(['/characters'])
-    );
-  }  
+  }   
 }
+
