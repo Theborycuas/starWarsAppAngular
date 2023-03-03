@@ -14,8 +14,14 @@
                 <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo" [(ngModel)]="character.haircolor">
                 <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel" [(ngModel)]="character.skincolor">
                 <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal" [(ngModel)]="character.homeworld">
+                <select name="heroclass" class="input-group" id="heroclass" [(ngModel)]="heroclassN" (ngModelChange)="changes()" >
+                    <option *ngFor="let elemento of heroic">{{elemento.name}}</option>
+                </select>
                 <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group" [(ngModel)]="character.image"/>
-                
+            </div>
+            <div class="column">
+                <img src="{{ heroclassI }}" alt="Explorador">
+                <p class="p"> {{ heroclassD }}</p>
             </div>
         </div>
         <a class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock"  >GUARDAR</a>

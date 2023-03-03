@@ -9,5 +9,6 @@ export class Character {
     haircolor!: string;
     skincolor!: string;
     homeworld!: string;
+    heroclass!: string;
     image!: string;
 }

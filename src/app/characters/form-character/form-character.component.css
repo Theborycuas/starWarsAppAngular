@@ -1,6 +1,6 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     margin-bottom: 20px;
 }
@@ -16,6 +16,7 @@ label {
     font-size: initial;
     letter-spacing: 1px;
 }
+
 .title {
     color: white;
     text-align: center;
@@ -77,6 +78,16 @@ section {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
+}
+img{
+  height: 150px;
+}
+.p {
+  color: white;
+  text-align: center;
+ 
+  
+  margin: 0;
 }
 @keyframes fill {
     0% {
