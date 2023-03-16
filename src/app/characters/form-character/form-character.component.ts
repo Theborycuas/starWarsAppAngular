@@ -10,7 +10,9 @@ import { FormControl, Validators, FormGroup ,FormBuilder} from '@angular/forms';
   styleUrls: ['./form-character.component.css']
 })
 export class FormCharacterComponent implements OnInit {
+
   resultado!: string;
+
   character: Character = new Character();
   imageFormcontrol: FormControl = new FormControl();
   control: FormControl = new FormControl();
@@ -19,15 +21,13 @@ export class FormCharacterComponent implements OnInit {
     name: new FormControl(''),
     birthyear: new FormControl(''),
     specie: new FormControl(''),
-    height: new FormControl(''),
-    mass: new FormControl(''),
     gender: new FormControl(''),
     haircolor: new FormControl(''),
     skincolor: new FormControl(''),
     homeworld: new FormControl('')
   });
 
-  constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute, private fb: FormBuilder) {
+  constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute, private formBuilder: FormBuilder) {
 
     this.control = new FormControl('', [
       Validators.required,      // Es requerido
@@ -39,17 +39,24 @@ export class FormCharacterComponent implements OnInit {
       Validators.required,      // Es requerido
       Validators.minLength(5),  // Mínimo de 5 caracteres
       Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)   //Validamos que sea una url correcta.
-    ]);  
+    ]); 
+     
   }
-  formularioContacto = this.fb.group({
-    birthyear: ['', [Validators.required]]// Es requerido
+
+  formularioContacto = this.formBuilder.group({
+    mass: ['', [Validators.required]],// Es requerido
+    height: ['', [Validators.required]]// Es requerido
+
   });
+  
+
   submit() {
     if (this.formularioContacto.valid)
       this.resultado = "Todos los datos son válidos";
     else
       this.resultado = "Hay datos inválidos en el formulario";
   }
+
   ngOnInit(): void {
     this.getCharacterById();
     console.log(this.imageFormcontrol);
