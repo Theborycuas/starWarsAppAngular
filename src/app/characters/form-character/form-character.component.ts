@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from '../character';
 import { CharacterService } from '../character.service';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-character',
@@ -10,11 +11,39 @@ import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
 })
 export class FormCharacterComponent implements OnInit {
   character: Character = new Character();
+  imageFormcontrol: FormControl = new FormControl();
+  control: FormControl = new FormControl();
+  generalValid: FormGroup = new FormGroup({
+    firstName: new FormControl(''),
+    name: new FormControl(''),
+    birthyear: new FormControl(''),
+    specie: new FormControl(''),
+    height: new FormControl(''),
+    mass: new FormControl(''),
+    gender: new FormControl(''),
+    haircolor: new FormControl(''),
+    skincolor: new FormControl(''),
+    homeworld: new FormControl('')
+  });
 
-  constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute) { }
+  constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute) {
+
+    this.control = new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]);  
+    
+    this.imageFormcontrol = new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.minLength(5),  // Mínimo de 5 caracteres
+      Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)   //Validamos que sea una url correcta.
+    ]);  
+  }
 
   ngOnInit(): void {
     this.getCharacterById();
+    console.log(this.imageFormcontrol);
   }
 
   getCharacterById():void{

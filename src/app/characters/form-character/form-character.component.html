@@ -1,27 +1,37 @@
 <section>
     <p class="title">CREAR PERSONAJE</p>
+    <br>
     <form class="center" action="/my-handling-form-page" method="post">
         <div class="container">
             <div class="column">
-                <input type="text" class="input-group"  name="name" placeholder="Nombre" [(ngModel)]="character.name">
-                <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento" [(ngModel)]="character.birthyear">
-                <input type="text" class="input-group" name="specie" placeholder="Especie" [(ngModel)]="character.specie">
-                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura" (keypress)="validateNumber($event)" [(ngModel)]="character.height">
-                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)" [(ngModel)]="character.mass">
+                <input type="text" class="input-group"  name="name" placeholder="Nombre" [(ngModel)]="character.name" [formControl]="control">
+                <div *ngIf="!control.valid && control.touched" class="labelvalidator">
+                    <label *ngIf="control.errors?.['required']" class="labelvalidator">INFORMACIÓN REQUERIDA</label>
+                    <label *ngIf="control.errors?.['minlength']" class="labelvalidator">MÍNIMO 5 CARACTERES</label>
+                </div>
+                <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento" [(ngModel)]="character.birthyear" [formControl]="control">
+                <input type="text" class="input-group" name="specie" placeholder="Especie" [(ngModel)]="character.specie" [formControl]="control">
+                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura" (keypress)="validateNumber($event)" [(ngModel)]="character.height" [formControl]="control">
+                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)" [(ngModel)]="character.mass" [formControl]="control">
             </div>
             <div class="column">
-                <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender">
-                <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo" [(ngModel)]="character.haircolor">
-                <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel" [(ngModel)]="character.skincolor">
-                <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal" [(ngModel)]="character.homeworld">
-                <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group" [(ngModel)]="character.image"/>
+                <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender" [formControl]="control">
+                <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo" [(ngModel)]="character.haircolor" [formControl]="control">
+                <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel" [(ngModel)]="character.skincolor" [formControl]="control">
+                <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal" [(ngModel)]="character.homeworld" [formControl]="control">
+                <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group" [(ngModel)]="character.image" [formControl]="imageFormcontrol">
+                <div *ngIf="!imageFormcontrol.valid && imageFormcontrol.touched" class="labelvalidator">
+                    <label *ngIf="imageFormcontrol.errors?.['required']" class="labelvalidator">INFORMACIÓN REQUERIDA</label>
+                    <label *ngIf="imageFormcontrol.errors?.['pattern']" class="labelvalidator">INGRESE UNA URL CORRECTA</label>
+                </div>
                 
             </div>
         </div>
-        <a class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock"  >GUARDAR</a>
+        <br>
+        <button   [disabled]="!control.valid" class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock">GUARDAR</button>
         
         <ng-template #elseBlock>
-            <a class="btn" role="button" (click)="updateCharacter()">ACTUALIZAR</a>  
+            <button   [disabled]="!control.valid" class="btn" role="button" (click)="updateCharacter()">ACTUALIZAR</button>
         </ng-template>
     </form>
 </section>
