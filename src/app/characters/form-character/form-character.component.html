@@ -1,15 +1,19 @@
 <section>
     <p class="title">CREAR PERSONAJE</p>
     <br>
-    <form class="center" action="/my-handling-form-page" method="post">
+    <form [formGroup]="formularioContacto" (ngSubmit)="submit()" class="center" action="/my-handling-form-page" method="post">
         <div class="container">
             <div class="column">
-                <input type="text" class="input-group"  name="name" placeholder="Nombre" [(ngModel)]="character.name" [formControl]="control">
+                <input type="text" class="input-group"  name="name" placeholder="Nombre" [(ngModel)]="character.name" [formControl]="control" >
+
                 <div *ngIf="!control.valid && control.touched" class="labelvalidator">
                     <label *ngIf="control.errors?.['required']" class="labelvalidator">INFORMACIÓN REQUERIDA</label>
                     <label *ngIf="control.errors?.['minlength']" class="labelvalidator">MÍNIMO 5 CARACTERES</label>
                 </div>
-                <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento" [(ngModel)]="character.birthyear" [formControl]="control">
+                <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento" [(ngModel)]="character.birthyear" [formControl]="control" formControlName="birthyear" required>
+                <span *ngIf="this.formularioContacto.get('birthyear')?.errors?.['required']">
+                    (El año de nacimiento no puede quedar vacío)
+                  </span>
                 <input type="text" class="input-group" name="specie" placeholder="Especie" [(ngModel)]="character.specie" [formControl]="control">
                 <input type="number" class="input-group inputnumber" name="height" placeholder="Altura" (keypress)="validateNumber($event)" [(ngModel)]="character.height" [formControl]="control">
                 <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)" [(ngModel)]="character.mass" [formControl]="control">
@@ -28,8 +32,9 @@
             </div>
         </div>
         <br>
-        <button   [disabled]="!control.valid" class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock">GUARDAR</button>
-        
+        <button   [disabled]="!control.valid" class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock " type="submit">GUARDAR</button>
+        <div>{{resultado}}</div>
+
         <ng-template #elseBlock>
             <button   [disabled]="!control.valid" class="btn" role="button" (click)="updateCharacter()">ACTUALIZAR</button>
         </ng-template>
