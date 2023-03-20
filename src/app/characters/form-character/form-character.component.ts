@@ -3,6 +3,8 @@ import { Character } from '../character';
 import { CharacterService } from '../character.service';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { FormControl, Validators, FormGroup ,FormBuilder} from '@angular/forms';
+import { ValidacionesPropias } from 'src/app/validaciones-propias';
+
 
 @Component({
   selector: 'app-form-character',
@@ -41,13 +43,20 @@ export class FormCharacterComponent implements OnInit {
       Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)   //Validamos que sea una url correcta.
     ]); 
      
-  }
+    
+  }/*
+  formularioContacto = new FormGroup({
+    mass: new FormControl('',[ValidacionesPropias.multiplo5]),
+    
+    height: new FormControl('')
+  });*/
 
   formularioContacto = this.formBuilder.group({
-    mass: ['', [Validators.required]],// Es requerido
+    mass: ['', [Validators.required, ValidacionesPropias.nocero, ValidacionesPropias.nonegativos]],// Es requerido
     height: ['', [Validators.required]]// Es requerido
 
   });
+
   
 
   submit() {
