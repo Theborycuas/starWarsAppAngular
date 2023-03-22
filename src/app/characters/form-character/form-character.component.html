@@ -10,18 +10,25 @@
                 <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa" (keypress)="validateNumber($event)" [(ngModel)]="character.mass">
             </div>
             <div class="column">
-                <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                    Tooltip on top
+                  </button>
+                  <button type="button" class="btn btn-secondary" data-toggle="tooltip"  title="mmmmm">
+                    Tooltip with HTML
+                  </button>
+                  <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender">
                 <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo" [(ngModel)]="character.haircolor">
+                
                 <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel" [(ngModel)]="character.skincolor">
                 <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal" [(ngModel)]="character.homeworld">
                 <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group" [(ngModel)]="character.image"/>
                 
             </div>
         </div>
-        <a class="btn" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock"  >GUARDAR</a>
+        <a class="btn1" role="button" (click)="createPersonaje()" *ngIf="!character.id else elseBlock"  >GUARDAR</a>
         
         <ng-template #elseBlock>
-            <a class="btn" role="button" (click)="updateCharacter()">ACTUALIZAR</a>  
+            <a class="btn1" role="button" (click)="updateCharacter()">ACTUALIZAR</a>  
         </ng-template>
     </form>
 </section>
