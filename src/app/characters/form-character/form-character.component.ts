@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from '../character';
 import { CharacterService } from '../character.service';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { Tooltip } from 'bootstrap';
 
 @Component({
   selector: 'app-form-character',
@@ -9,12 +10,25 @@ import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./form-character.component.css']
 })
 export class FormCharacterComponent implements OnInit {
+  tooltipTop!: string;
+  tooltipRight!: string;
+  tooltipLeft!: string;
+  tooltipBottom!: string;
   character: Character = new Character();
 
   constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getCharacterById();
+    this.tooltipTop = "Tooltip on top";
+    this.tooltipRight = "Tooltip on right";
+    this.tooltipLeft = "Tooltip on left";
+    this.tooltipBottom = "Tooltip on bottom";
+    //tooltio settings
+    setTimeout(()=>{  
+    Array.from(document.querySelectorAll('div[data-bs-toggle="tooltip"]'))
+   .forEach(tooltipNode => new Tooltip(tooltipNode))
+     }, 100);
   }
 
   getCharacterById():void{
