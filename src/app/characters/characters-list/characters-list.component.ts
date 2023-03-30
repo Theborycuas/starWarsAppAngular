@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Character } from '../character';
 import { CharacterService } from '../character.service';
+import { delay, of } from 'rxjs';
 
 
 
@@ -13,7 +14,7 @@ import { CharacterService } from '../character.service';
 export class CharactersListComponent implements OnInit {
   
   character!: Character[];
-  
+  detalles: any;
   constructor(private characterService: CharacterService) {
   }
  
@@ -32,6 +33,9 @@ export class CharactersListComponent implements OnInit {
       () => {                                   //Complete callback
         console.log('Request completed')
       })
+
+      this.detalles = of('Más detalles aqui').pipe(delay(3000));
+
   }
   
   deleteCharacter(character:Character):void{

@@ -30,7 +30,15 @@
     margin: 0px;
     padding: 5px 0px;
 }
-
+.character h5{
+    color: white;
+    background-color: orange;
+    text-align: center;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    margin: 0px;
+    padding: 5px 0px;
+}
 .icon {
     color: white;
     text-align: center;

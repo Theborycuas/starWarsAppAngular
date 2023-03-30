@@ -17,8 +17,9 @@
             </a>
         </div>
         <a class="character" [routerLink]="['/characters/form-character/', char.id]">
+            <h5>{{ detalles | async}}</h5>     
             <img src='{{char.image}}' alt="">
-            <h2>{{ char.name }}</h2>             
+            <h2>{{ char.name | lowercase }}</h2>           
         </a>
     </div>  
 </section>
