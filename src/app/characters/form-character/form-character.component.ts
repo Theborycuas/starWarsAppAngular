@@ -28,6 +28,7 @@ export class FormCharacterComponent implements OnInit {
     skincolor: new FormControl(''),
     homeworld: new FormControl('')
   });
+name: any;
 
   constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute, private formBuilder: FormBuilder) {
 
