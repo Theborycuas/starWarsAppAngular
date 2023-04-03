@@ -1,7 +1,7 @@
 <section>
     <p class="title">CREAR PERSONAJE</p>
     <br>
-    <form [formGroup]="formularioContacto" (ngSubmit)="submit()" class="center" action="/my-handling-form-page"
+    <form [formGroup]="generalValid" (ngSubmit)="submit()" class="center" action="/my-handling-form-page"
         method="post">
         <div class="container">
             <div class="column">
@@ -13,42 +13,88 @@
                     <label *ngIf="control.errors?.['minlength']" class="labelvalidator">MÍNIMO 5 CARACTERES</label>
                 </div>
                 <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento"
-                    [(ngModel)]="character.birthyear" [formControl]="control">
-
+                    [(ngModel)]="character.birthyear" formControlName="birthyear">
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('birthyear')?.touched && this.generalValid.get('birthyear')?.errors?.['required']">
+                INFORMACIÓN REQUERIDA
+                </span>
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('birthyear')?.touched && this.generalValid.get('birthyear')?.errors?.['minlength']">
+                MÍNIMO 5 CARACTERES
+                </span>
                 <input type="text" class="input-group" name="specie" placeholder="Especie"
                     [(ngModel)]="character.specie" [formControl]="control">
-                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura"
+                <span class="labelvalidator"
+                    *ngIf="this.generalValid.get('specie')?.touched && this.generalValid.get('specie')?.errors?.['required']">
+                    INFORMACIÓN REQUERIDA
+                </span> 
+                <span class="labelvalidator"
+                    *ngIf="this.generalValid.get('specie')?.touched && this.generalValid.get('specie')?.errors?.['minlength']">
+                    MÍNIMO 5 CARACTERES
+                </span> 
+                <input type="text" class="input-group inputnumber" name="height" placeholder="Altura"
                     (keypress)="validateNumber($event)" [(ngModel)]="character.height" formControlName="height"
-                    required>
-                
+                    required>                
                 <span class="labelvalidator"
-                    *ngIf="this.formularioContacto.get('height')?.touched && this.formularioContacto.get('height')?.errors?.['required']">
-                    La altura no puede quedar vacía
+                    *ngIf="this.generalValid.get('height')?.touched && this.generalValid.get('height')?.errors?.['required']">
+                    ALTURA REQUERIDA
                 </span>
-                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa"
-                    [(ngModel)]="character.mass" formControlName="mass" required>
+                <input type="text" class="input-group inputnumber" name="mass" placeholder="Masa"
+                (keypress)="validateNumber($event)" [(ngModel)]="character.mass" formControlName="mass" required>
                 <span class="labelvalidator"
-                    *ngIf="this.formularioContacto.get('mass')?.touched && this.formularioContacto.get('mass')?.errors?.['required']">
-                    La masa no puede quedar vacía
+                    *ngIf="this.generalValid.get('mass')?.touched && this.generalValid.get('mass')?.errors?.['required']">
+                    MASA REQUERIDA
                 </span>
                 <span class="labelvalidator"
-                    *ngIf="this.formularioContacto.get('mass')?.touched && this.formularioContacto.get('mass')?.errors?.['nocero']">
+                    *ngIf="this.generalValid.get('mass')?.touched && this.generalValid.get('mass')?.errors?.['nocero']">
                     La masa no puede ser cero.
                 </span>
                 <span class="labelvalidator"
-                    *ngIf="this.formularioContacto.get('mass')?.touched && this.formularioContacto.get('mass')?.errors?.['nonegativos']">
+                    *ngIf="this.generalValid.get('mass')?.touched && this.generalValid.get('mass')?.errors?.['nonegativos']">
                     No pueden poner numeros negativos
                 </span>
             </div>
             <div class="column">
                 <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender"
-                    [formControl]="control">
+                formControlName="gender">
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('gender')?.touched && this.generalValid.get('gender')?.errors?.['required']">
+                INFORMACIÓN REQUERIDA
+                </span>
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('gender')?.touched && this.generalValid.get('gender')?.errors?.['minlength']">
+                MÍNIMO 5 CARACTERES
+                </span> 
                 <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo"
-                    [(ngModel)]="character.haircolor" [formControl]="control">
+                    [(ngModel)]="character.haircolor" formControlName="haircolor">
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('haircolor')?.touched && this.generalValid.get('haircolor')?.errors?.['required']">
+                INFORMACIÓN REQUERIDA
+                </span>
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('haircolor')?.touched && this.generalValid.get('haircolor')?.errors?.['minlength']">
+                MÍNIMO 5 CARACTERES
+                </span> 
                 <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel"
-                    [(ngModel)]="character.skincolor" [formControl]="control">
+                    [(ngModel)]="character.skincolor" formControlName="skincolor">
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('skincolor')?.touched && this.generalValid.get('skincolor')?.errors?.['required']">
+                INFORMACIÓN REQUERIDA
+                </span>
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('skincolor')?.touched && this.generalValid.get('skincolor')?.errors?.['minlength']">
+                MÍNIMO 5 CARACTERES
+                </span> 
                 <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal"
-                    [(ngModel)]="character.homeworld" [formControl]="control">
+                    [(ngModel)]="character.homeworld" formControlName="homeworld">
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('homeworld')?.touched && this.generalValid.get('homeworld')?.errors?.['required']">
+                INFORMACIÓN REQUERIDA
+                </span>
+                <span class="labelvalidator"
+                *ngIf="this.generalValid.get('homeworld')?.touched && this.generalValid.get('homeworld')?.errors?.['minlength']">
+                MÍNIMO 5 CARACTERES
+                </span> 
                 <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group"
                     [(ngModel)]="character.image" [formControl]="imageFormcontrol">
                 <div *ngIf="!imageFormcontrol.valid && imageFormcontrol.touched" class="labelvalidator">
@@ -61,7 +107,7 @@
             </div>
         </div>
         <br>
-        <button [disabled]="!control.valid || formularioContacto.invalid" class="btn" role="button"
+        <button [disabled]="!control.valid || generalValid.invalid" class="btn" role="button"
             (click)="createPersonaje()" *ngIf="!character.id else elseBlock " type="submit">GUARDAR</button>
         <ng-template #elseBlock>
             <button [disabled]="!control.valid" class="btn" role="button"

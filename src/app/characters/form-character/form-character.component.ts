@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Character } from '../character';
 import { CharacterService } from '../character.service';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
@@ -11,22 +11,45 @@ import { ValidacionesPropias } from 'src/app/validaciones-propias';
   templateUrl: './form-character.component.html',
   styleUrls: ['./form-character.component.css']
 })
-export class FormCharacterComponent implements OnInit {
+export class FormCharacterComponent implements OnInit{
 
   resultado!: string;
-
   character: Character = new Character();
   imageFormcontrol: FormControl = new FormControl();
   control: FormControl = new FormControl();
   generalValid: FormGroup = new FormGroup({
-    firstName: new FormControl(''),
-    name: new FormControl(''),
-    birthyear: new FormControl(''),
-    specie: new FormControl(''),
-    gender: new FormControl(''),
-    haircolor: new FormControl(''),
-    skincolor: new FormControl(''),
-    homeworld: new FormControl('')
+    birthyear: new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]),
+    specie: new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]),
+    gender: new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]),
+    haircolor: new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]),
+    skincolor: new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]),
+    homeworld: new FormControl('', [
+      Validators.required,      // Es requerido
+      Validators.maxLength(50), // Máximo de 50 caracteres
+      Validators.minLength(5),  // Mínimo de 4 caracteres   
+    ]),
+    mass: new FormControl('', [Validators.required, ValidacionesPropias.nocero, ValidacionesPropias.nonegativos]),    
+    height: new FormControl('', [Validators.required, ValidacionesPropias.nocero, ValidacionesPropias.nonegativos]),// Es requerido
   });
 
   constructor(private characterService:CharacterService, private router:Router, private activateRoute:ActivatedRoute, private formBuilder: FormBuilder) {
@@ -44,23 +67,11 @@ export class FormCharacterComponent implements OnInit {
     ]); 
      
     
-  }/*
-  formularioContacto = new FormGroup({
-    mass: new FormControl('',[ValidacionesPropias.multiplo5]),
-    
-    height: new FormControl('')
-  });*/
-
-  formularioContacto = this.formBuilder.group({
-    mass: ['', [Validators.required, ValidacionesPropias.nocero, ValidacionesPropias.nonegativos]],// Es requerido
-    height: ['', [Validators.required]]// Es requerido
-
-  });
-
-  
+  }
+ 
 
   submit() {
-    if (this.formularioContacto.valid)
+    if (this.generalValid.valid)
       this.resultado = "Todos los datos son válidos";
     else
       this.resultado = "Hay datos inválidos en el formulario";
@@ -77,6 +88,7 @@ export class FormCharacterComponent implements OnInit {
         let id=c['id']; 
         this.characterService.getPersonajeById(id).subscribe(
           cha=>{
+            console.log("Obtener Personaje por ID");
             console.log(cha);
             if (cha !== null) {              
               this.character=cha;
@@ -84,14 +96,7 @@ export class FormCharacterComponent implements OnInit {
               this.router.navigate(['/pageNotFound'])
             }
           }   
-        );
-        /*if(id){
-          this.characterService.getPersonajeById(id).subscribe(
-            cha=>this.character=cha
-          );
-        }else{
-          console.error('Request failed with error')
-        }*/
+        );        
       },      
     )    
   }
