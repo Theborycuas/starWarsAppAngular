@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Character } from '../character';
 import { CharacterService } from '../character.service';
@@ -10,11 +10,22 @@ import { CharacterService } from '../character.service';
   templateUrl: './characters-list.component.html',
   styleUrls: ['./characters-list.component.css']
 })
-export class CharactersListComponent implements OnInit {
+export class CharactersListComponent implements OnInit, DoCheck {
   
   character!: Character[];
+  errorDoCheck?: Boolean;
+  errorMessage?: string;
+  errorStatus?: Number;
+  errorUrl?: string;
   
   constructor(private characterService: CharacterService) {
+  }
+
+  ngDoCheck(): void {
+    console.log("DoCheck");
+    if(this.errorDoCheck == false && this.errorStatus == 0){
+      alert("Error en la conexión con el API: " + this.errorUrl);
+    }
   }
  
   ngOnInit() {
@@ -27,7 +38,12 @@ export class CharactersListComponent implements OnInit {
       },
       (error) => {                              //Error callback
         console.error('Request failed with error')
-        alert(error);
+        //alert(error);
+        this.errorDoCheck = error.ok;
+        this.errorMessage = error.message;
+        this.errorStatus = error.status;
+        this.errorUrl = error.url;
+        console.error(error)
       },
       () => {                                   //Complete callback
         console.log('Request completed')
