@@ -6,8 +6,8 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
 import { CharacterDetailComponent } from './character-detail/character-detail.component';
 //Importa FormCharacter
 import { FormCharacterComponent } from './form-character/form-character.component';
-//Importa FormModule
-import { FormsModule } from '@angular/forms';
+//Importa ReactiveFormsModule
+import {ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CharactersRoutingModule,
-    //Importa FormModule
-    FormsModule
+    //Importa ReactiveFormsModule
+    ReactiveFormsModule
   ]
 })
 export class CharactersModule { }
