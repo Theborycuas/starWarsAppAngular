@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  selectIdioma: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  CambiarIdioma(idioma: any){
+    console.log(idioma);
+    this.selectIdioma=idioma;
 
+  }
 }

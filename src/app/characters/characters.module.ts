@@ -8,14 +8,11 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 import { FormCharacterComponent } from './form-character/form-character.component';
 //Importa ReactiveFormsModule
 import {ReactiveFormsModule } from '@angular/forms';
-import { CambiosCheroicaComponent } from './cambios-cheroica/cambios-cheroica.component';
-
 @NgModule({
   declarations: [
     CharactersListComponent,
     CharacterDetailComponent,
     FormCharacterComponent,
-    CambiosCheroicaComponent
   ],
   imports: [
     CommonModule,

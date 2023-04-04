@@ -1,6 +1,10 @@
 <header>
-    <h1>STAR WARS | GUIDE</h1>
-     <nav>
-        <a routerLink="/home">HOME</a> 
-     </nav> 
+   <br>
+   <div class="right">
+      <button class="btn" (click)="CambiarIdioma('Espaniol')"> Español
+      </button>
+      <button class="btn" (click)="CambiarIdioma('Ingles')"> Inglés
+      </button>
+   </div>
+   <app-header-idioma [name]="selectIdioma"></app-header-idioma>
 </header>
