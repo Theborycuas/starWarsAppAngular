@@ -14,6 +14,7 @@ import { ValidacionesPropias } from 'src/app/validaciones-propias';
 export class FormCharacterComponent implements OnInit {
 
   resultado!: string;
+  idiomas: any[] = [];
 
   character: Character = new Character();
   imageFormcontrol: FormControl = new FormControl();
@@ -55,8 +56,41 @@ export class FormCharacterComponent implements OnInit {
     height: ['', [Validators.required]]// Es requerido
 
   });
+  selectIdioma: any;
 
- 
+  CambiarIdioma(idioma: any){
+    this.selectIdioma=idioma;
+
+  }
+  onMensajeHijo(idioma: any) {
+   if(idioma=='Ingles'){
+    this.idiomas[0].titulo="Create character"
+    this.idiomas[0].nombre="Name"
+    this.idiomas[0].anionacimiento="Bithday"
+    this.idiomas[0].especie="Specie"
+    this.idiomas[0].altura="Height"
+    this.idiomas[0].masa="Mass"
+    this.idiomas[0].genero="Gender"
+    this.idiomas[0].pelocolor="Hair color"
+    this.idiomas[0].pielcolor="Skin color"
+    this.idiomas[0].mundo="Homeworld"
+    this.idiomas[0].url="Url image"
+   }   else{
+    this.idiomas[0].titulo="Crear personaje"
+    this.idiomas[0].nombre="Nombre"
+    this.idiomas[0].anionacimiento="Año de nacimiento"
+    this.idiomas[0].especie="Especie"
+    this.idiomas[0].altura="Altura"
+    this.idiomas[0].masa="Masa"
+    this.idiomas[0].genero="Genero"
+    this.idiomas[0].pelocolor="Color de pelo"
+    this.idiomas[0].pielcolor="Color de piel"
+    this.idiomas[0].mundo="Mundo natal"
+    this.idiomas[0].url="Url imagen"
+
+   } 
+   
+  }
 
   submit() {
     if (this.formularioContacto.valid)

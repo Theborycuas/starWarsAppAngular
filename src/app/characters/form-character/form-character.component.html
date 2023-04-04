@@ -1,23 +1,31 @@
 <section>
-    <p class="title">CREAR PERSONAJE</p>
+     <div class="right">
+        <button class="btn-lg" (click)="CambiarIdioma('Espaniol')"> Español
+        </button>
+        <button class="btn-lg" (click)="CambiarIdioma('Ingles')"> Inglés
+        </button>
+    </div>
+    
+    <app-idioma-form [idiomaInput]="selectIdioma" (eventoHijo)="onMensajeHijo($event)"></app-idioma-form>
+    <p class="title">{{idiomas[0].titulo}}</p>
     <br>
     <form [formGroup]="formularioContacto" (ngSubmit)="submit()" class="center" action="/my-handling-form-page"
         method="post">
         <div class="container">
             <div class="column">
-                <input type="text" class="input-group" name="name" placeholder="Nombre" [(ngModel)]="character.name"
+                <input type="text" class="input-group" name="name" placeholder="{{idiomas[0].nombre}}" [(ngModel)]="character.name"
                     [formControl]="control">
 
                 <div *ngIf="!control.valid && control.touched" class="labelvalidator">
                     <label *ngIf="control.errors?.['required']" class="labelvalidator">INFORMACIÓN REQUERIDA</label>
                     <label *ngIf="control.errors?.['minlength']" class="labelvalidator">MÍNIMO 5 CARACTERES</label>
                 </div>
-                <input type="text" class="input-group" name="birthyear" placeholder="Año de Nacimiento"
+                <input type="text" class="input-group" name="birthyear" placeholder="{{idiomas[0].anionacimiento}}"
                     [(ngModel)]="character.birthyear" [formControl]="control">
 
-                <input type="text" class="input-group" name="specie" placeholder="Especie"
+                <input type="text" class="input-group" name="specie" placeholder="{{idiomas[0].especie}}"
                     [(ngModel)]="character.specie" [formControl]="control">
-                <input type="number" class="input-group inputnumber" name="height" placeholder="Altura"
+                <input type="number" class="input-group inputnumber" name="height" placeholder="{{idiomas[0].altura}}"
                     (keypress)="validateNumber($event)" [(ngModel)]="character.height" formControlName="height"
                     required>
                 
@@ -25,7 +33,7 @@
                     *ngIf="this.formularioContacto.get('height')?.touched && this.formularioContacto.get('height')?.errors?.['required']">
                     La altura no puede quedar vacía
                 </span>
-                <input type="number" class="input-group inputnumber" name="mass" placeholder="Masa"
+                <input type="number" class="input-group inputnumber" name="mass" placeholder="{{idiomas[0].masa}}"
                     [(ngModel)]="character.mass" formControlName="mass" required>
                 <span class="labelvalidator"
                     *ngIf="this.formularioContacto.get('mass')?.touched && this.formularioContacto.get('mass')?.errors?.['required']">
@@ -41,15 +49,15 @@
                 </span>
             </div>
             <div class="column">
-                <input type="text" class="input-group" name="gender" placeholder="Género" [(ngModel)]="character.gender"
+                <input type="text" class="input-group" name="gender" placeholder="{{idiomas[0].genero}}" [(ngModel)]="character.gender"
                     [formControl]="control">
-                <input type="text" class="input-group" name="haircolor" placeholder="Color de Pelo"
+                <input type="text" class="input-group" name="haircolor" placeholder="{{idiomas[0].pelocolor}}"
                     [(ngModel)]="character.haircolor" [formControl]="control">
-                <input type="text" class="input-group" name="skincolor" placeholder="Color de Piel"
+                <input type="text" class="input-group" name="skincolor" placeholder="{{idiomas[0].pielcolor}}"
                     [(ngModel)]="character.skincolor" [formControl]="control">
-                <input type="text" class="input-group" name="homeworld" placeholder="Mundo Natal"
+                <input type="text" class="input-group" name="homeworld" placeholder="{{idiomas[0].mundo}}"
                     [(ngModel)]="character.homeworld" [formControl]="control">
-                <input type="text" name="imagen" placeholder="URL IMAGE" class="input-group"
+                <input type="text" name="imagen" placeholder="{{idiomas[0].url}}" class="input-group"
                     [(ngModel)]="character.image" [formControl]="imageFormcontrol">
                 <div *ngIf="!imageFormcontrol.valid && imageFormcontrol.touched" class="labelvalidator">
                     <label *ngIf="imageFormcontrol.errors?.['required']" class="labelvalidator">INFORMACIÓN
