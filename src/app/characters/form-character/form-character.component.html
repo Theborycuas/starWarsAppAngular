@@ -107,11 +107,12 @@
             </div>
         </div>
         <br>
+        <button class="btn" role="button" [routerLink]="['/characters/']" type="submit">VOLVER</button>
         <button [disabled]="!control.valid || generalValid.invalid" class="btn" role="button"
             (click)="createPersonaje()" *ngIf="!character.id else elseBlock " type="submit">GUARDAR</button>
         <ng-template #elseBlock>
             <button [disabled]="!control.valid" class="btn" role="button"
                 (click)="updateCharacter()">ACTUALIZAR</button>
-        </ng-template>
+        </ng-template>        
     </form>
 </section>
