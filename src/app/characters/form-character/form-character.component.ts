@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Character } from '../character';
 import { CharacterService } from '../character.service';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { ValidacionesPropias } from 'src/app/validaciones-propias';
   templateUrl: './form-character.component.html',
   styleUrls: ['./form-character.component.css']
 })
-export class FormCharacterComponent implements OnInit{
+export class FormCharacterComponent implements OnInit, OnDestroy{
 
   resultado!: string;
   character: Character = new Character();
@@ -67,8 +67,7 @@ export class FormCharacterComponent implements OnInit{
     ]); 
      
     
-  }
- 
+  } 
 
   submit() {
     if (this.generalValid.valid)
@@ -80,6 +79,10 @@ export class FormCharacterComponent implements OnInit{
   ngOnInit(): void {
     this.getCharacterById();
     console.log(this.imageFormcontrol);
+  }
+
+  ngOnDestroy(): void {
+    console.log("OnDestroy On")
   }
 
   getCharacterById():void{
