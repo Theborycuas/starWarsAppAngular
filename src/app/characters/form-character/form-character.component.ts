@@ -14,7 +14,9 @@ import { ValidacionesPropias } from 'src/app/validaciones-propias';
 export class FormCharacterComponent implements OnInit {
 
   resultado!: string;
-  idiomas: any[] = [];
+  idiomas: any[] = [{
+    }
+  ];
 
   character: Character = new Character();
   imageFormcontrol: FormControl = new FormControl();
@@ -64,7 +66,7 @@ export class FormCharacterComponent implements OnInit {
   }
   onMensajeHijo(idioma: any) {
    if(idioma=='Ingles'){
-    this.idiomas[0].titulo="Create character"
+    //this.idiomas[0].titulo="Create character"
     this.idiomas[0].nombre="Name"
     this.idiomas[0].anionacimiento="Bithday"
     this.idiomas[0].especie="Specie"
@@ -76,7 +78,7 @@ export class FormCharacterComponent implements OnInit {
     this.idiomas[0].mundo="Homeworld"
     this.idiomas[0].url="Url image"
    }   else{
-    this.idiomas[0].titulo="Crear personaje"
+    //this.idiomas[0].titulo="Crear personaje"
     this.idiomas[0].nombre="Nombre"
     this.idiomas[0].anionacimiento="Año de nacimiento"
     this.idiomas[0].especie="Especie"

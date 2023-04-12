@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-idioma-form',
   templateUrl: './idioma-form.component.html',
   styleUrls: ['./idioma-form.component.css']
 })
-export class IdiomaFormComponent implements OnInit {
+export class IdiomaFormComponent implements OnInit, OnChanges {
   @Input() idiomaInput="Espaniol"; 
   @Output () eventoHijo: EventEmitter<string> = new EventEmitter();
   constructor() {}

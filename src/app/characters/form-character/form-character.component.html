@@ -7,7 +7,7 @@
     </div>
     
     <app-idioma-form [idiomaInput]="selectIdioma" (eventoHijo)="onMensajeHijo($event)"></app-idioma-form>
-    <p class="title">{{idiomas[0].titulo}}</p>
+    <p class="title"></p>
     <br>
     <form [formGroup]="formularioContacto" (ngSubmit)="submit()" class="center" action="/my-handling-form-page"
         method="post">
